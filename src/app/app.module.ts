@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { TrendingTagsComponent } from './components/trending-tags/trending-tags.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,17 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
     HomeComponent,
     TrendingTagsComponent,
     ArticleComponent,
-    ArticleCardComponent
+    ArticleCardComponent,
+    GlobalFeedComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     routes
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [
+    {provide: APP_BASE_HREF, useValue: '/'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

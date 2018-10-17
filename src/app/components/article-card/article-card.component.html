@@ -4,13 +4,13 @@
       <div class="text-inner d-flex align-items-center">
         <div class="content">
           <header class="post-header">
-            <a href="post.html"><h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
+            <a href="post.html"><h2 class="h4">{{article.title}}</h2></a>
           </header>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <p>{{article.body}}</p>
           <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-            <div class="title"><span>John Doe</span></div></a>
-            <div class="date">2 months ago</div>
-            <div class="comments">12</div>
+            <div class="title"><span>{{article.author.username}}</span></div></a>
+            <div class="date">{{article.createdAt}}</div>
+            <div class="comments">{{article.favoritesCount}}</div>
           </footer>
         </div>
       </div>
