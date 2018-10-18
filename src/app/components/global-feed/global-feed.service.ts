@@ -9,8 +9,8 @@ export class GlobalFeedService {
   constructor(private http: HttpClient) { }
 
   public getGlobalFeed(pageNumber: number = 1) {
-    const offset = (pageNumber - 1) * 20;
-    const params = new HttpParams().set('offset', String(offset));
+    const offset = (pageNumber - 1) * environment.pageSize;
+    const params = new HttpParams().set('offset', String(offset)).append('limit', String(environment.pageSize));
     return this.http.get(environment.apiUrl + '/articles/', {params: params});
   }
 }

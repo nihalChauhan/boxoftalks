@@ -12,6 +12,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     TrendingTagsComponent,
     ArticleComponent,
     ArticleCardComponent,
-    GlobalFeedComponent
+    GlobalFeedComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

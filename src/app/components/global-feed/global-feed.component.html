@@ -1,3 +1,4 @@
-<div *ngFor="let article of articles">
+<div *ngFor="let article of articles" id="feed">
   <app-article-card [article] = "article"></app-article-card>
 </div>
+<app-paginator [pagination]="pagination" (update)="changePage($event)"></app-paginator>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IArticle } from 'src/app/models/IArticle';
+import { IPagination } from 'src/app/models/IPagination';
 import { GlobalFeedService } from './global-feed.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-global-feed',
@@ -10,11 +12,28 @@ import { GlobalFeedService } from './global-feed.service';
 export class GlobalFeedComponent implements OnInit {
 
   articles: IArticle[];
+  pagination: IPagination;
 
-  constructor(private api: GlobalFeedService) { }
+  constructor(private api: GlobalFeedService) {
+    this.articles = [];
+    this.pagination = new IPagination();
+    this.pagination.currentPage = 1;
+  }
 
   ngOnInit() {
-    this.api.getGlobalFeed(1).subscribe(data => this.articles = data['articles']);
+    this.api.getGlobalFeed().subscribe(data => {
+      this.articles = data['articles'];
+      this.pagination.totalPages = Number(data['articlesCount']) / environment.pageSize;
+    });
+  }
+
+  changePage(targetPage: number) {
+    this.pagination.currentPage = targetPage;
+    this.api.getGlobalFeed(targetPage).subscribe(data => {
+      this.articles = data['articles'];
+      this.pagination.totalPages = Number(data['articlesCount']) / environment.pageSize;
+    });
+    console.log('total pages : ' + this.pagination.totalPages);
   }
 
 }
