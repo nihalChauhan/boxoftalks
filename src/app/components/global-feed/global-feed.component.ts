@@ -33,7 +33,8 @@ export class GlobalFeedComponent implements OnInit {
       this.articles = data['articles'];
       this.pagination.totalPages = Number(data['articlesCount']) / environment.pageSize;
     });
-    console.log('total pages : ' + this.pagination.totalPages);
+    const feed = document.getElementById('feed');
+    feed.scrollIntoView();
   }
 
 }

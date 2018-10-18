@@ -13,6 +13,7 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
 import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ArticleComponent,
     ArticleCardComponent,
     GlobalFeedComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
