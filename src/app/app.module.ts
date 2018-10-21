@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { routes } from './app.routes';
@@ -14,6 +15,8 @@ import { GlobalFeedComponent } from './components/global-feed/global-feed.compon
 import { HttpClientModule } from '@angular/common/http';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { CommentComponent } from './components/comment/comment.component';
     ArticleCardComponent,
     GlobalFeedComponent,
     PaginatorComponent,
-    CommentComponent
+    CommentComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     routes
   ],
   providers: [

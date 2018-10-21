@@ -32,9 +32,9 @@ export class GlobalFeedComponent implements OnInit {
     this.api.getGlobalFeed(targetPage).subscribe(data => {
       this.articles = data['articles'];
       this.pagination.totalPages = Number(data['articlesCount']) / environment.pageSize;
+      const feed = document.getElementById('feed');
+      feed.scrollIntoView();
     });
-    const feed = document.getElementById('feed');
-    feed.scrollIntoView();
   }
 
 }

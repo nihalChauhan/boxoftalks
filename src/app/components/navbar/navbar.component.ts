@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  loggedIn: boolean;
+  constructor(private userService: UserService) {
+    userService.loggedInObservable.subscribe(res => this.loggedIn = res);
+  }
 
   ngOnInit() {
   }
 
+  logout() {
+    this.userService.logoutUser();
+  }
 }
