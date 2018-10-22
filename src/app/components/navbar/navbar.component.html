@@ -9,6 +9,8 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a (click)="logout()" style="cursor:pointer" class="nav-link">Logout</a>
           </li>
+          <li class="nav-item"><a [routerLink]="['new']" class="nav-link">Add Article</a>
+          </li>
         </ul>
       </div>
         <div *ngIf="!loggedIn">

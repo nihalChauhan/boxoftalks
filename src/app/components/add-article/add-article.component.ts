@@ -21,7 +21,7 @@ export class AddArticleComponent implements OnInit {
       .subscribe(
         (data) => {
           this.errorList = [];
-          this.router.navigate(['']);
+          this.router.navigate(['article'], {queryParams: {slug: data['article'].slug}});
         },
         (error) => {
           this.errorList = [];

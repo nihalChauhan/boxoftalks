@@ -21,6 +21,8 @@ import { TagFeedComponent } from './components/tag-feed/tag-feed.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
 import { TagComponent } from './components/tag/tag.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { AddArticleComponent } from './components/add-article/add-article.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     LoginComponent,
     TagFeedComponent,
     UserFeedComponent,
-    TagComponent
+    TagComponent,
+    AddArticleComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +51,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     routes
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: '/'},
-    JwtInterceptor
+    {provide: APP_BASE_HREF, useValue: '/'}
   ],
   bootstrap: [AppComponent]
 })

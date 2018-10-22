@@ -4,6 +4,9 @@
         <div class="image"><img src={{comment?.author?.image}} alt="..." class="img-fluid rounded-circle"></div>
         <div class="title"><strong>{{comment?.author?.username}}</strong><span class="date">{{comment?.createdAt}}</span></div>
       </div>
+      <div *ngIf="canDelete" style="float:right">
+        <button (click)="delete()">Delete</button>
+      </div>
     </div>
     <div class="comment-body">
       <p>{{comment?.body}}</p>

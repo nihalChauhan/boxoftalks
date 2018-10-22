@@ -24,7 +24,7 @@ export class UserService {
 
   saveUser(userContainer: any) {
     const stateUser = userContainer['user'];
-    localStorage.setItem('user', stateUser);
+    localStorage.setItem('user', JSON.stringify(stateUser));
     this.loggedIn.next(true);
   }
 

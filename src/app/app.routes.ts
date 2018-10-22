@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
 import { TagFeedComponent } from './components/tag-feed/tag-feed.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
+import { AddArticleComponent } from './components/add-article/add-article.component';
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'article', component: ArticleComponent },
+    { path: 'new', component: AddArticleComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
     { path: '**', redirectTo: 'home' }

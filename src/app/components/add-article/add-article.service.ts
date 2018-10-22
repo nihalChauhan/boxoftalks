@@ -7,14 +7,6 @@ import { environment } from '../../../environments/environment';
 })
 export class AddArticleService {
   constructor(private http: HttpClient) { }
-
-  setHeader(): Object {
-    return {
-      'Content-Type': 'application/json',
-      'Authorization': 'Token ' + JSON.parse(localStorage.getItem('user')).token
-    };
-  }
-
   addArticle(title: string, description: string, body: string, tags: string) {
     const tagList = tags.split(' ');
     const articleObject = Object.assign({}, {
@@ -26,7 +18,6 @@ export class AddArticleService {
       }});
     const user = JSON.parse(localStorage.getItem('user'));
     const token = 'Token ' + user.token;
-    console.log(token);
     return this.http.post(environment.apiUrl + '/articles', articleObject, {
       headers: {
         'Content-Type': 'application/json',

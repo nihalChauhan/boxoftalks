@@ -28,4 +28,14 @@ export class ArticleComponent implements OnInit {
     });
   }
 
+  commentUpdate(event: any) {
+    this.api.getComments(this.route.snapshot.queryParams['slug']).subscribe(commentsData => {
+      this.comments = commentsData['comments'];
+    });
+  }
+
+  commentDelete(event: any) {
+    this.api.deleteComment(this.route.snapshot.queryParams['slug'], event).subscribe();
+    this.comments.splice( this.comments.indexOf(this.comments.find(c => c.id === event)), 1 );
+  }
 }
