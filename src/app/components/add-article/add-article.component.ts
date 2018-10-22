@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 export class AddArticleComponent implements OnInit {
   errorList: string[] = [];
   showValidationMessages: Boolean;
+  title: string;
+  body: string;
+  tags: string;
+  description: string;
   constructor(private api: AddArticleService, private router: Router) { }
 
   ngOnInit() {

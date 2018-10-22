@@ -14,6 +14,7 @@ export class EditArticleComponent implements OnInit {
   articleForm: FormGroup = null;
   errorList: string[];
   formValuesFetched = false;
+  showValidationMessages = false;
   constructor(private api: EditArticleService, private router: Router, private route: ActivatedRoute, formBuilder: FormBuilder) {
     this.articleForm = formBuilder.group({
       title: null,

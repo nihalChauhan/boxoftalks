@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   errorList: string[] = [];
   showValidationMessages: Boolean;
+  username: string;
+  email: string;
+  password: string;
   constructor(private api: UserService, private router: Router) { }
 
   ngOnInit() {
