@@ -14,7 +14,7 @@
                   <div class="title"><span>{{article?.author?.username}}</span></div></a>
                 <div class="d-flex align-items-center flex-wrap">       
                   <div class="date">{{article?.createdAt | date}}</div>
-                  <div class="views">{{article?.favoritesCount}} favorited this</div>
+                  <app-fav [fav]="fav"></app-fav>
                 </div>
               </div>
               <div *ngIf="loggedIn && username==article?.author?.username" class="buttons">

@@ -25,6 +25,7 @@ import { AddArticleComponent } from './components/add-article/add-article.compon
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditArticleComponent } from './components/edit-article/edit-article.component';
+import { FavComponent } from './components/fav/fav.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditArticleComponent } from './components/edit-article/edit-article.com
     AddArticleComponent,
     AddCommentComponent,
     ProfileComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    FavComponent
   ],
   imports: [
     BrowserModule,

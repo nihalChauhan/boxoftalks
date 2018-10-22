@@ -17,7 +17,18 @@ export class ProfileService {
     const params = new HttpParams().set('offset', String(offset))
       .append('limit', String(environment.pageSize))
       .append('author', username);
-    return this.http.get(environment.apiUrl + '/articles/', {params: params});
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = 'Token ' + user.token;
+      return this.http.get(environment.apiUrl + '/articles/', {params: params,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        }
+      });
+    } else {
+      return this.http.get(environment.apiUrl + '/articles/', {params: params});
+    }
   }
 
   follow(username: string) {

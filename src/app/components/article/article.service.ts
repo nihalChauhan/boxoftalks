@@ -9,7 +9,18 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   public getArticle(slug: string) {
-    return this.http.get(environment.apiUrl + '/articles/' + slug);
+    if (localStorage.getItem('user')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = 'Token ' + user.token;
+      return this.http.get(environment.apiUrl + '/articles/' + slug, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        }
+      });
+    } else {
+      return this.http.get(environment.apiUrl + '/articles/' + slug);
+    }
   }
 
   public deleteArticle(slug: string) {

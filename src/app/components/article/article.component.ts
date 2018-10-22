@@ -4,6 +4,7 @@ import { ArticleService } from './article.service';
 import { ActivatedRoute, Params, Router} from '@angular/router';
 import { IComment } from 'src/app/models/IComment';
 import { UserService } from '../../services/user.service';
+import { IFav } from 'src/app/models/IFav';
 
 @Component({
   selector: 'app-article',
@@ -14,9 +15,11 @@ export class ArticleComponent implements OnInit {
   loggedIn: boolean;
   username: string;
   article: IArticle;
+  fav: IFav;
   comments: IComment[];
   constructor(private api: ArticleService,  private router: Router, private route: ActivatedRoute, private userService: UserService) {
     userService.loggedInObservable.subscribe(res => {
+      this.fav = new IFav();
       this.loggedIn = res;
       if (this.loggedIn) {
         this.username = JSON.parse(localStorage.getItem('user')).username;
@@ -29,6 +32,9 @@ export class ArticleComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.api.getArticle(this.route.snapshot.queryParams['slug']).subscribe(data => {
         this.article = data['article'];
+        this.fav.favCount = this.article.favoritesCount;
+        this.fav.favSwitch = this.article.favorited;
+        this.fav.slug = this.article.slug;
         this.api.getComments(this.route.snapshot.queryParams['slug']).subscribe(commentsData => {
           this.comments = commentsData['comments'];
         });
