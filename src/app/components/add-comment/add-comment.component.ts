@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AddCommentService } from './add-comment.service';
+import { UserService } from '../../services/user.service'; 
 
 @Component({
   selector: 'app-add-comment',
@@ -9,9 +10,13 @@ import { AddCommentService } from './add-comment.service';
 export class AddCommentComponent implements OnInit {
   @Input() slug: string;
   errorList: string[];
+  loggedIn: boolean;
+
   // tslint:disable-next-line:no-output-rename
   @Output('update') commentUpdate: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor(private api: AddCommentService) { }
+  constructor(private api: AddCommentService, private userService: UserService) {
+    userService.loggedInObservable.subscribe(res => this.loggedIn = res);
+  }
 
   ngOnInit() {
   }

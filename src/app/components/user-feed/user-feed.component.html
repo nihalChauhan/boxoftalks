@@ -10,12 +10,17 @@
 </nav>
 
 <div *ngIf="!articles">
-  No Articles are here... yet.
+  Loading ...
 </div>
 
-<div *ngIf="articles">
+<div *ngIf="articles?.length === 0">
+No Articles are here... yet.
+</div>
+
+<div *ngIf="articles?.length !== 0">
 <div *ngFor="let article of articles" id="feed">
   <app-article-card [article] = "article"></app-article-card>
 </div>
 <app-paginator *ngIf="isValid()" [pagination]="pagination" (update)="changePage($event)"></app-paginator>
 </div>
+

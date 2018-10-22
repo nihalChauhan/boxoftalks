@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { routes } from './app.routes';
@@ -20,9 +21,10 @@ import { LoginComponent } from './components/login/login.component';
 import { TagFeedComponent } from './components/tag-feed/tag-feed.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
 import { TagComponent } from './components/tag/tag.component';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +44,15 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     UserFeedComponent,
     TagComponent,
     AddArticleComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    ProfileComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     routes
   ],
   providers: [

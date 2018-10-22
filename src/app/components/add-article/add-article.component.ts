@@ -16,7 +16,6 @@ export class AddArticleComponent implements OnInit {
   }
 
   postArticle(formValues) {
-    console.log('safasf');
     this.api.addArticle(formValues.title, formValues.description, formValues.body, formValues.tags)
       .subscribe(
         (data) => {

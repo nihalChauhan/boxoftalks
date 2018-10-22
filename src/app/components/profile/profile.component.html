@@ -1,0 +1,25 @@
+<div *ngIf="!articles">
+  Loading ...
+</div>
+
+<section *ngIf="articles" class="featured-posts">
+    <div class="container">
+      <div class="row">
+        
+          <div class="col-lg-2 offset-md-5 author">
+              <img src={{profile?.image}} alt="..." width="100%">
+              <h4 class="text-center">@{{profile?.username}}</h4>
+              <button *ngIf="loggedIn && canFollow" (click)="followToggle()" class="form-control">{{followState}}</button>
+              <p *ngIf="!loggedIn" class="text-center">Log in to follow</p>
+          </div>
+        
+        <div class="col-lg-10 offset-md-1">
+            <div *ngIf="articles">
+                <div *ngFor="let article of articles" id="feed">
+                  <app-article-card [article] = "article"></app-article-card>
+                </div>
+              </div>              
+        </div>
+      </div>
+    </div>
+  </section>

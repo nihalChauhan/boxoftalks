@@ -1,4 +1,7 @@
-<div class="add-comment">
+<div class="add-comment" *ngIf="!loggedIn">
+  <p>You need to be logged in to post comments.</p>
+</div>
+<div class="add-comment" *ngIf="loggedIn">
   <header>
     <h3 class="h6">Leave a comment</h3>
   </header>

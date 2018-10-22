@@ -8,8 +8,14 @@ import { UserService } from '../../services/user.service';
 })
 export class NavbarComponent implements OnInit {
   loggedIn: boolean;
+  username: string;
   constructor(private userService: UserService) {
-    userService.loggedInObservable.subscribe(res => this.loggedIn = res);
+    userService.loggedInObservable.subscribe(res => {
+      this.loggedIn = res;
+      if (this.loggedIn) {
+        this.username = JSON.parse(localStorage.getItem('user')).username;
+      }
+    });
   }
 
   ngOnInit() {

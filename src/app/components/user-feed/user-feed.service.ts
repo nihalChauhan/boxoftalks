@@ -11,6 +11,14 @@ export class UserFeedService {
   public getUserFeed(pageNumber: number = 1) {
     const offset = (pageNumber - 1) * environment.pageSize;
     const params = new HttpParams().set('offset', String(offset)).append('limit', String(environment.pageSize));
-    return this.http.get(environment.apiUrl + '/articles/feed', {params: params});
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = 'Token ' + user.token;
+    return this.http.get(environment.apiUrl + '/articles/feed', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      params: params
+   });
   }
 }

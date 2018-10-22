@@ -3,6 +3,7 @@ import { IArticle } from 'src/app/models/IArticle';
 import { ArticleService } from './article.service';
 import { ActivatedRoute, Params} from '@angular/router';
 import { IComment } from 'src/app/models/IComment';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-article',
@@ -10,10 +11,17 @@ import { IComment } from 'src/app/models/IComment';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-
+  loggedIn: boolean;
+  username: string;
   article: IArticle;
   comments: IComment[];
-  constructor(private api: ArticleService, private route: ActivatedRoute) {
+  constructor(private api: ArticleService, private route: ActivatedRoute, private userService: UserService) {
+    userService.loggedInObservable.subscribe(res => {
+      this.loggedIn = res;
+      if (this.loggedIn) {
+        this.username = JSON.parse(localStorage.getItem('user')).username;
+      }
+    });
   }
 
   ngOnInit() {

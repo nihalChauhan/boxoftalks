@@ -7,7 +7,9 @@ import { GlobalFeedComponent } from './components/global-feed/global-feed.compon
 import { TagFeedComponent } from './components/tag-feed/tag-feed.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
 import { AddArticleComponent } from './components/add-article/add-article.component';
-
+import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
 
 const appRoutes: Routes = [
     {
@@ -20,7 +22,9 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'article', component: ArticleComponent },
-    { path: 'new', component: AddArticleComponent },
+    { path: 'profile', component: ProfileComponent },
+    { path: 'new', component: AddArticleComponent, canActivate: [AuthGuard] },
+    { path: 'edit', component: EditArticleComponent, canActivate: [AuthGuard] },
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
     { path: '**', redirectTo: 'home' }

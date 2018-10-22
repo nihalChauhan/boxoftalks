@@ -5,11 +5,13 @@
         <a [routerLink]="['/']" class="navbar-brand">Box of Talks</a>
       </div>
       <div>
-        <div *ngIf="loggedIn">
+        <div *ngIf="loggedIn && username">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a (click)="logout()" style="cursor:pointer" class="nav-link">Logout</a>
           </li>
           <li class="nav-item"><a [routerLink]="['new']" class="nav-link">Add Article</a>
+          </li>
+          <li class="nav-item"><a [routerLink]="['profile']"  [queryParams]="{username: username}"  class="nav-link">{{username}}</a>
           </li>
         </ul>
       </div>

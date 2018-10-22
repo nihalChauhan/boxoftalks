@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="article">
     <div class="row">
   
   
@@ -8,13 +8,19 @@
           <div class="post-single">
             <div class="post-details">
               <h1>{{article?.title}}</h1>
-              <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
+              <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a class="author d-flex align-items-center flex-wrap"
+                  routerLink='/profile'  [queryParams]="{username: article?.author?.username}" >
                   <div class="avatar"><img src={{article?.author?.image}} alt="..." class="img-fluid rounded-circle"></div>
                   <div class="title"><span>{{article?.author?.username}}</span></div></a>
                 <div class="d-flex align-items-center flex-wrap">       
-                  <div class="date">{{article?.createdAt}}</div>
-                  <div class="views">{{article?.favoritesCount}}</div>
+                  <div class="date">{{article?.createdAt | date}}</div>
+                  <div class="views">{{article?.favoritesCount}} favorited this</div>
                 </div>
+              </div>
+              <div *ngIf="loggedIn && username==article?.author?.username" class="buttons">
+                <a class="btn btn-outline-warning" routerLink='/edit' [queryParams]="{slug: article?.slug}">Edit</a>
+                &nbsp;
+                <a class="btn btn-outline-danger" (click)="articleDeleteEvent()">Delete</a>
               </div>
               <div class="post-body">
                 {{article?.body}}

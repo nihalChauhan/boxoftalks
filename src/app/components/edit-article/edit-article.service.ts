@@ -5,25 +5,19 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
+export class EditArticleService {
   constructor(private http: HttpClient) { }
 
   public getArticle(slug: string) {
     return this.http.get(environment.apiUrl + '/articles/' + slug);
   }
 
-  public deleteArticle(slug: string) {
-    return this.http.get(environment.apiUrl + '/articles/' + slug);
-  }
-
-  public getComments(slug: string) {
-    return this.http.get(environment.apiUrl + '/articles/' + slug + '/comments');
-  }
-
-  public deleteComment(slug: string, id: number) {
+  public updateArticle(title: string, description: string, body: string, slug: string) {
+    const articleUpdateObject = Object.assign({}, {article: {title, description, body}});
     const user = JSON.parse(localStorage.getItem('user'));
     const token = 'Token ' + user.token;
-    return this.http.delete(environment.apiUrl + `/articles/${slug}/comments/${id}`, {
+
+    return this.http.put(environment.apiUrl + '/articles/' + slug, articleUpdateObject,  {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': token
