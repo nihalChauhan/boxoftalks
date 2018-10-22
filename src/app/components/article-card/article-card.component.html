@@ -4,12 +4,15 @@
       <div class="text-inner d-flex align-items-center">
         <div class="content">
           <header class="post-header">
-            <a [routerLink]="['article']" [queryParams]="{slug: article.slug}"><h2 class="h4">{{article.title}}</h2></a>
+            <a routerLink='/article' [queryParams]="{slug: article.slug}"><h2 class="h4">{{article.title}}</h2></a>
           </header>
-          <p>{{article.body}}</p>
+          <p>{{article.description}}</p>
           <footer class="post-footer d-flex align-items-center"><a class="author d-flex align-items-center flex-wrap">
+            <!-- add link here -->
+            <div class="avatar"><img src={{article?.author?.image}} alt="..." class="img-fluid rounded-circle"></div>
             <div class="title"><span>{{article.author.username}}</span></div></a>
-            <div class="date">{{article.createdAt}}</div>
+            
+            <div class="date">{{article.createdAt | date: 'dd/MM/yyyy'}}</div>
             <div class="comments">{{article.favoritesCount}} <i class="fa fa-heart"></i></div>
           </footer>
         </div>

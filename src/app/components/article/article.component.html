@@ -20,12 +20,12 @@
                 {{article?.body}}
               </div>
               <div  class="post-tags">
-                  <a *ngFor="let tag of article?.tagList" href="#" class="tag">#{{tag}}</a>
+                  <app-tag *ngFor="let tag of article?.tagList" [tagName]="tag"></app-tag>
                 </div>
   
               <div class="post-comments">
                 <header>
-                  <h3 class="h6">Post Comments<span class="no-of-comments">({{comments.length}})</span></h3>
+                  <h3 class="h6">Post Comments<span class="no-of-comments">({{comments?.length}})</span></h3>
                 </header>
                 
                 <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>                                

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IArticle } from 'src/app/models/IArticle';
 import { ArticleService } from './article.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import { IAuthor } from 'src/app/models/IAuthor';
+import { ActivatedRoute, Params} from '@angular/router';
 import { IComment } from 'src/app/models/IComment';
 
 @Component({

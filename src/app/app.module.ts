@@ -17,6 +17,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { TagFeedComponent } from './components/tag-feed/tag-feed.component';
+import { UserFeedComponent } from './components/user-feed/user-feed.component';
+import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { LoginComponent } from './components/login/login.component';
     PaginatorComponent,
     CommentComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    TagFeedComponent,
+    UserFeedComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,
