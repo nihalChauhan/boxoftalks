@@ -19,9 +19,6 @@ export class ProfileComponent implements OnInit {
   canFollow: boolean;
   constructor(private route: ActivatedRoute, private api: ProfileService, private userService: UserService) {
     userService.loggedInObservable.subscribe(res => this.loggedIn = res);
-    if (this.loggedIn) {
-      this.canFollow = JSON.parse(localStorage.getItem('user')).username === this.username ? false : true;
-    }
   }
 
   ngOnInit() {
@@ -29,6 +26,9 @@ export class ProfileComponent implements OnInit {
       this.username = this.route.snapshot.queryParams['username'];
         this.api.getProfile(this.username).subscribe(data => {
           this.profile = data['profile'];
+          if (this.loggedIn) {
+            this.canFollow = JSON.parse(localStorage.getItem('user')).username === this.username ? false : true;
+          }
           this.followState = this.profile.following ? 'Unfollow' : 'Follow';
           this.api.getProfileFeed(this.username).subscribe(articles => {
             this.articles = articles['articles'];
