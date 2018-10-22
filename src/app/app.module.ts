@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TagFeedComponent } from './components/tag-feed/tag-feed.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
 import { TagComponent } from './components/tag/tag.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TagComponent } from './components/tag/tag.component';
     routes
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: '/'}
+    {provide: APP_BASE_HREF, useValue: '/'},
+    JwtInterceptor
   ],
   bootstrap: [AppComponent]
 })
