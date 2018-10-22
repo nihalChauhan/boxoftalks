@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IArticle } from 'src/app/models/IArticle';
 import { ArticleService } from './article.service';
-import { ActivatedRoute, Params} from '@angular/router';
+import { ActivatedRoute, Params, Router} from '@angular/router';
 import { IComment } from 'src/app/models/IComment';
 import { UserService } from '../../services/user.service';
 
@@ -15,7 +15,7 @@ export class ArticleComponent implements OnInit {
   username: string;
   article: IArticle;
   comments: IComment[];
-  constructor(private api: ArticleService, private route: ActivatedRoute, private userService: UserService) {
+  constructor(private api: ArticleService,  private router: Router, private route: ActivatedRoute, private userService: UserService) {
     userService.loggedInObservable.subscribe(res => {
       this.loggedIn = res;
       if (this.loggedIn) {
@@ -45,5 +45,11 @@ export class ArticleComponent implements OnInit {
   commentDelete(event: any) {
     this.api.deleteComment(this.route.snapshot.queryParams['slug'], event).subscribe();
     this.comments.splice( this.comments.indexOf(this.comments.find(c => c.id === event)), 1 );
+  }
+
+  articleDeleteEvent() {
+    this.api.deleteArticle(this.route.snapshot.queryParams['slug']).subscribe(
+      data => this.router.navigate(['/'])
+    );
   }
 }

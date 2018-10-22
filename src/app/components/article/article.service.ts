@@ -13,7 +13,14 @@ export class ArticleService {
   }
 
   public deleteArticle(slug: string) {
-    return this.http.get(environment.apiUrl + '/articles/' + slug);
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = 'Token ' + user.token;
+    return this.http.delete(environment.apiUrl + '/articles/' + slug, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
+    });
   }
 
   public getComments(slug: string) {
